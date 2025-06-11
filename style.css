@@ -15,11 +15,23 @@ body {
 header {
   background-color: #E53E3E;
   color: white;
-  padding: 20px 0;
-  text-align: center;
+  padding: 20px;
   font-family: 'Pacifico', cursive;
   font-size: 2.5rem;
   animation: slideDown 1s ease-in-out;
+  display: flex;              /* Add this */
+  align-items: center;        /* Vertically center items */
+  gap: 20px;       
+  
+}
+
+header h3{
+  font-size: 1.2rem;
+  font-weight: normal;
+  display: block;
+  margin: 0;
+  align-self: flex-end;    
+  padding-top: 22px;   
 }
 @keyframes slideDown {
   from { transform: translateY(-100%); opacity: 0; }
@@ -28,7 +40,11 @@ header {
 nav {
   background: #fff3e6;
   padding: 15px;
+  width: 100%;
   text-align: center;
+  position: sticky;    /* Make nav stick to the top */
+  top: 0;              /* Stick to the very top */
+  z-index: 100;
 }
 nav a {
   margin: 0 15px;
@@ -269,7 +285,7 @@ footer {
   top: 30px;
   right: 30px;
   background: #ff4e00;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 12px 18px;
   border-radius: 50px;
   cursor: pointer;
@@ -278,8 +294,8 @@ footer {
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 #cart-count {
-  background: #fff;
-  color: #ff4e00;
+  background: #ff4e00;
+  color: #ffffff;
    border-radius: 50%;
   padding: 2px 8px;
   margin-left: 6px;
@@ -327,4 +343,15 @@ footer {
 }
 #cart-sidebar button + button {
   margin-top: 15px;
+}
+#cart-sidebar button#buy-now-btn {
+  background: #28a745;      /* Green color for Buy Now */
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
 }
