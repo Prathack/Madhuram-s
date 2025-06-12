@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customize Your Burger</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="abc.css">
+  <style>
+    .customize-container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: #fffbe6;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+      padding: 30px;
+      text-align: center;
+    }
+    .custom-burger-img {
+      width: 220px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #ff4e00;
+      margin-bottom: 20px;
+      background: #fff;
+    }
+    .options-group {
+      margin: 20px 0;
+      text-align: left;
+    }
+    .options-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    .customize-btn {
+      background: #ff4e00;
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .customize-btn:hover {
+      background: #cc3300;
+    }
+  </style>
+</head>
+<body>
+  <div class="customize-container">
+    <h2>Customize Your Burger</h2>
+    <img src="https://pngimg.com/d/burger_sandwich_PNG4135.png" alt="Custom Burger" class="custom-burger-img">
+    
+    <form id="custom-burger-form">
+
+    
+
+      <div class="options-group">
+  <strong>Toppings:</strong><br>
+  <label>
+    <img src="https://img.icons8.com/color/32/lettuce.png" alt="Lettuce" style="width:24px;vertical-align:middle;margin-right:6px;">
+    <input type="checkbox" name="toppings" value="Lettuce"> Lettuce
+  </label>
+  <label>
+    <img src="https://img.icons8.com/color/32/tomato.png" alt="Tomato" style="width:24px;vertical-align:middle;margin-right:6px;">
+    <input type="checkbox" name="toppings" value="Tomato"> Tomato
+  </label>
+  <label>
+    <img src="https://img.icons8.com/color/32/onion.png" alt="Onion" style="width:24px;vertical-align:middle;margin-right:6px;">
+    <input type="checkbox" name="toppings" value="Onion"> Onion
+  </label>
+  <label>
+    <img src="https://img.icons8.com/color/32/cheese.png" alt="Cheese" style="width:24px;vertical-align:middle;margin-right:6px;">
+    <input type="checkbox" name="toppings" value="Cheese"> Cheese
+  </label>
+
+</div>
+
+<!-- Example for Sauces -->
+<div class="options-group">
+  <strong>Sauces:</strong><br>
+  <label>
+    <img src="https://img.icons8.com/?size=100&id=xf7Mx6SaTXPc&format=png&color=000000" alt="Ketchup" style="width:24px;vertical-align:middle;margin-right:6px;">
+    <input type="checkbox" name="sauces" value="Ketchup"> Ketchup
+  </label>
+  <label>
+    <img src="https://img.icons8.com/?size=100&id=AmH0IoKVa1yQ&format=png&color=000000" alt="Mayonnaise" style="width:24px;vertical-align:middle;margin-right:6px;">
+    <input type="checkbox" name="sauces" value="Mayonnaise"> Mayonnaise
+  </label>
+  <label>
+    <img src="https://img.icons8.com/color/32/mustard.png" alt="Mustard" style="width:24px;vertical-align:middle;margin-right:6px;">
+    <input type="checkbox" name="sauces" value="Mustard"> Mustard
+  </label>
+  <label>
+    <img src="https://img.icons8.com/?size=100&id=iUcMsI25U02X&format=png&color=000000" alt="BBQ Sauce" style="width:24px;vertical-align:middle;margin-right:6px;">
+    <input type="checkbox" name="sauces" value="BBQ Sauce"> BBQ Sauce
+  </label>
+  <label>
+    <img src="https://img.icons8.com/color/32/chili-pepper.png" alt="Spicy Sauce" style="width:24px;vertical-align:middle;margin-right:6px;">
+    <input type="checkbox" name="sauces" value="Spicy Sauce"> Spicy Sauce
+  </label>
+
+    <button type="submit" class="customize-btn" style="display:block; margin: 30px auto 0 auto;">
+    Add Custom Burger to Cart
+  </button>
+
+</div>
+  <script>
+    document.getElementById('custom-burger-form').onsubmit = function(e) {
+      e.preventDefault();
+      const toppings = Array.from(document.querySelectorAll('input[name="toppings"]:checked')).map(cb => cb.value);
+      const sauces = Array.from(document.querySelectorAll('input[name="sauces"]:checked')).map(cb => cb.value);
+      const name = "Custom Burger";
+      const image = "https://pngimg.com/d/burger_sandwich_PNG4135.png";
+      let desc = '';
+      if (toppings.length > 0) desc += 'Toppings: ' + toppings.join(', ') + '. ';
+      if (sauces.length > 0) desc += 'Sauces: ' + sauces.join(', ') + '.';
+      // Save to localStorage or send to main page (example uses localStorage)
+      const customBurger = { name, image, desc };
+      localStorage.setItem('customBurger', JSON.stringify(customBurger));
+      alert('Custom burger added! Go to your cart to see it.');
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
